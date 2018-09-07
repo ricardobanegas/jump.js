@@ -27,17 +27,17 @@ const jumper = () => {
   // scroll position helper
 
   function location () {
-    return container ? 
-      container.scrollTop :
-      window.scrollY || window.pageYOffset
+    return container
+      ? container.scrollTop
+      : window.scrollY || window.pageYOffset
   }
 
   // element offset helper
 
   function top (element) {
-    return container ? 
-      element.offsetTop : 
-      element.getBoundingClientRect().top + start
+    return container
+      ? element.offsetTop
+      : element.getBoundingClientRect().top + start
   }
 
   // rAF loop helper
