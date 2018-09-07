@@ -7,7 +7,10 @@ const config = {
   entry: 'src/jump.js',
   plugins: [
     resolve(),
-    babel()
+    babel({
+      exclude: 'node_modules/**',
+      plugins: ['external-helpers']
+    })
   ],
   targets: [
     {
