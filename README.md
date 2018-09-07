@@ -179,6 +179,10 @@ jump('.target', {
 
 Note that this option is disabled by default because it has _visual implications_ in many browsers. Focusing an element triggers the `:focus` CSS state selector, and is often accompanied by an `outline`.
 
+### container
+
+If container node is specified it will scroll inside the container using `scrollTop` instead of `window.scrollTo`
+
 ## Browser Support
 
 Jump depends on the following browser APIs:

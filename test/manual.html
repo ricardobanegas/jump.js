@@ -6,11 +6,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
+  <style>
+    body {
+      margin-bottom: 1200px;
+    }
+
+    #wrapper {
+      position: relative;
+      top: 250px;
+      height: 300px;
+      border: 1px solid black;
+      width: 50%;
+      overflow-y: scroll;
+    }
+
+    #inner {
+      position: relative;
+      height: 1200px;
+      z-index: 1;
+      background-color: lightblue;
+    }
+
+    .tester {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: red;
+      top: 50%;
+    }
+
+    #inner .tester {
+      background-color: green;
+    }
+
+    .test-button {
+      background-color: white;
+      border: 2px solid black;
+      color: black;
+      cursor: pointer;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .test-buttons {
+      position: fixed;
+      bottom: 20px;
+    }
+  </style>
   <body>
+    top
+    <div class="test-buttons">
+        <button id="testBodyBtn" class="test-button">Test body</button>
+        <button id="testInnerBtn" class="test-button">Test container</button>
+    </div>
+    
+    <div id="testBody" class="tester"></div>
+
+    <div id="wrapper">
+      <div id="inner">
+          top inner
+          <div id="testInner" class="tester"></div>
+      </div>
+    </div>
     <script src="../dist/jump.js"></script>
     <script>
       console.log('Module assigned to window.Jump. Logged below:')
       console.log(Jump)
+      var bodyTester = document.querySelector('#testBody')
+      var innerTester = document.querySelector('#testInner')
+      var wrapper = document.querySelector('#wrapper')
+
+      function testBody() {
+        Jump(bodyTester, { 
+          offset: -20
+        })
+      }
+
+      function testInner() {
+        Jump(innerTester, { 
+          offset: -20, 
+          container: wrapper
+        })
+      }
+
+      document.querySelector('#testInnerBtn').addEventListener('click', function() {
+        testInner();
+      })
+
+      document.querySelector('#testBodyBtn').addEventListener('click', function() {
+        testBody();
+      })
     </script>
   </body>
 </html>
